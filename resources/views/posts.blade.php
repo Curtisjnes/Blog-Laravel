@@ -1,26 +1,37 @@
-<!doctype html>
+    <x-layout>
+            @include('_posts-header')
 
-<title>My Blog</title>
+        <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
+                <x-post-featured-card :post="$post" />
 
-<link rel="stylesheet" href="/app.css">
+                <div class="lg:grid lg:grid-cols-2">
+                    <x-post-card />
+                    <x-post-card />
+                </div>
 
-<body>
+                <div class="lg:grid lg:grid-cols-3">
+                    <x-post-card />
+                    <x-post-card />
+                    <x-post-card />
+                </div>
+        </main>
 
-    <?php foreach ($posts as $post) : ?>
+        {{--        @foreach($posts as $post)--}}
+{{--            <article>--}}
+{{--                <h1>--}}
+{{--                    <a href="/posts/{!!$post->id!!}">--}}
+{{--                        {{$post ->title}}--}}
+{{--                    </a>--}}
+{{--                </h1>--}}
+{{--                <p>--}}
+{{--                    By <a href="/authors/{{ $post->author->username }}">{{$post->author->name}}</a> in  <a href="/categories/{{$post->category->slug}}">{{$post->category->name}}</a>--}}
+{{--                </p>--}}
 
-    <article>
+{{--                <div>--}}
+{{--                    {{$post->excerpt}}--}}
+{{--                </div>--}}
+{{--            </article>--}}
+{{--        @endforeach--}}
+    </x-layout>
 
-        <h1>
-            <a href="/posts/<?= $post->slug; ?>">
-                <?=$post->title ?>
-            </a>
-        </h1>
 
-        <div>
-            <?= $post->excerpt; ?>
-        </div>
-   </article>
-
-    <?php endforeach; ?>
-
-</body>
